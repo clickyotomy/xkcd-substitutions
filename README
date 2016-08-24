@@ -6,7 +6,10 @@ Substitutions that make reading the news more fun!
 Fetch random articles from https://www.reddit.com/r/news,
 substitute them xkcd style.
 
-Inspired from https://xkcd.com/{1288,1625,1679}/.
+Inspired from xkcd Substitutions
+    1. https://xkcd.com/1288
+    2. https://xkcd.com/1625
+    3. https://xkcd.com/1679
 
 Setup
     [+] sudo pip install -U newspaper requests
