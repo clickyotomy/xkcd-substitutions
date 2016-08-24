@@ -24,3 +24,7 @@ Usage
       -w N, --width N       text width; default: 80
       -d http [text ...], --debug http [text ...]
                             enable debugging
+
+
+Note: `substitutions.json` will be updated when a new issue of the comic is
+      released.
