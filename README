@@ -14,7 +14,7 @@ Setup
 
 
 Usage
-    xkcd-reddit-news [-h] [-w N] [-d http [text ...]]
+    xkcd-substitutions [-h] [-w N] [-d http [text ...]]
 
     Substitutions that make reading the news more fun!
     https://github.com/clickyotomy/xkcd-substitutions
