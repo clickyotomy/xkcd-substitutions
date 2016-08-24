@@ -204,13 +204,14 @@ def fetch(width=70, text_debug=True, request_debug=False):
                          ' (reddit.com).').format(user=post['reddit-author'],
                                                   subreddit=post['subreddit'],
                                                   time=time),
-                        subsequent_indent=' ' * 13)
+                        subsequent_indent=' ' * 13, width=width)
     print textwrap.fill('# permalink: http://www.reddit.com{permalink}'.format(
-        permalink=post['permalink']), subsequent_indent=' ' * 13)
-    print '# domain:    {domain}'.format(domain=post['domain'],)
+        permalink=post['permalink']), subsequent_indent=' ' * 13, width=width)
+    print textwrap.fill('# domain:    {domain}'.format(domain=post['domain']),
+                        subsequent_indent=' ' * 13, width=width)
 
     print textwrap.fill('# source:    {url}.'.format(url=post['url']),
-                        subsequent_indent=' ' * 13)
+                        subsequent_indent=' ' * 13, width=width)
     print '\n{0}\n'.format('*' * width)
 
     # Display raw data from the news article.
@@ -218,8 +219,9 @@ def fetch(width=70, text_debug=True, request_debug=False):
         print '\n{0}\n'.format('~' * width)
         print DEBUG_CALL('original-content', '-' * len('original-content'))
         print '\n'.join([_.center(width, ' ') for _ in
-                         textwrap.wrap(article.title)])
-        justified = justify(text, 70)
+                         textwrap.wrap(article.title, width=width)])
+        justified = justify(text, width)
+        print '\n'
         for sentence in justified:
             print ''.join(sentence)
 
@@ -227,7 +229,7 @@ def fetch(width=70, text_debug=True, request_debug=False):
 
     # Parse the content, justify and display the text.
     print '\n'.join([_.center(width, ' ') for _ in
-                     textwrap.wrap(substitute(article.title))])
+                     textwrap.wrap(substitute(article.title), width=width)])
     print '\n{0}\n'.format('-' * width)
     substituted = justify(substitute(text), width)
     for sentence in substituted:
