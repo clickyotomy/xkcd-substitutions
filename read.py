@@ -2,7 +2,7 @@
 
 '''
 Substitutions that make reading the news more fun!
-Inspired from https://xkcd.com/{1288,1625,1679}/.
+Inspired from https://xkcd.com/{1004,1031,1288,1418,1625,1679}/.
 '''
 
 import re

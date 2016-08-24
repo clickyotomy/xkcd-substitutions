@@ -7,16 +7,20 @@ Fetch random articles from https://www.reddit.com/r/news,
 substitute them xkcd style.
 
 Inspired from xkcd Substitutions
-    1. https://xkcd.com/1288
-    2. https://xkcd.com/1625
-    3. https://xkcd.com/1679
+    1. https://xkcd.com/1004
+    2. https://xkcd.com/1031
+    3. https://xkcd.com/1288
+    4. https://xkcd.com/1418
+    5. https://xkcd.com/1625
+    6. https://xkcd.com/1679
 
-Setup
+
+SETUP
     [+] sudo pip install -U newspaper requests
     [+] git clone https://github.com/clickyotomy/xkcd-substitutions
 
 
-Usage
+USAGE
     read.py [-h] [-w N] [-d http [text ...]]
 
     Substitutions that make reading the news more fun!
@@ -29,5 +33,10 @@ Usage
                             enable debugging
 
 
-Note: `substitutions.json` will be updated when a new issue of the comic is
-      released.
+TODO
+    [-] Look into case-sensitive text replacement.
+
+
+NOTES
+    `substitutions.json` will be updated when a new issue of the comic
+    is released.
