@@ -254,8 +254,7 @@ def main():
                'https://github.com/clickyotomy/xkcd-substitutions')
 
     parser = ArgumentParser(description=message,
-                            formatter_class=RawDescriptionHelpFormatter,
-                            prog='xkcd-substitutions')
+                            formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument('-w', '--width', help='text width; default: 80',
                         default=80, type=int, metavar=('N'))
     parser.add_argument('-d', '--debug', help='enable debugging',
