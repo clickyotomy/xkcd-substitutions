@@ -138,7 +138,7 @@ def http_debug(response):
 
 def reddit(debug=False):
     '''
-    Fetch a random post from Reddit.
+    Fetch a random post from Reddit (http://www.reddit.com/r/news).
     '''
     _hash = hashlib.sha1(str(random.random())).hexdigest()
     headers = {
@@ -184,7 +184,7 @@ def reddit(debug=False):
 
 def fetch(width=70, text_debug=True, request_debug=False):
     '''
-    Fetch the article using 'newspaper' -- from a random post from /r/news.
+    Fetch the article using 'newspaper'.
     '''
     post = reddit(request_debug)
     if post is None:
@@ -213,7 +213,7 @@ def fetch(width=70, text_debug=True, request_debug=False):
                         subsequent_indent=' ' * 13)
     print '\n{0}\n'.format('*' * width)
 
-    # Display raw data from the news article
+    # Display raw data from the news article.
     if text_debug:
         print '\n{0}\n'.format('~' * width)
         print DEBUG_CALL('original-content', '-' * len('original-content'))
