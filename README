@@ -1,0 +1,26 @@
+xkcd-substitutions
+------------------
+
+Substitutions that make reading the news more fun!
+
+Fetch random articles from https://www.reddit.com/r/news,
+substitute them xkcd style.
+
+Inspired from https://xkcd.com/{1288,1625,1679}/.
+
+Setup
+    [+] sudo pip install -U newspaper requests
+    [+] git clone https://github.com/clickyotomy/xkcd-substitutions
+
+
+Usage
+    xkcd-reddit-news [-h] [-w N] [-d http [text ...]]
+
+    Substitutions that make reading the news more fun!
+    https://github.com/clickyotomy/xkcd-substitutions
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -w N, --width N       text width; default: 80
+      -d http [text ...], --debug http [text ...]
+                            enable debugging
