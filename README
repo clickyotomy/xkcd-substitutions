@@ -21,7 +21,7 @@ SETUP
 
 
 USAGE
-    read.py [-h] [-w N] [-d http [text ...]]
+    read.py [-h] [-w N] [-d [DEBUG [http, text, repl ...]]]
 
     Substitutions that make reading the news more fun!
     https://github.com/clickyotomy/xkcd-substitutions
