@@ -45,7 +45,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-def replace_with_case(word, replace, text, debug=True):
+def replace_with_case(word, replace, text, debug=False):
     '''
     Make a replacement, but preserve the case.
     '''
