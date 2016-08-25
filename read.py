@@ -56,7 +56,7 @@ def replace_with_case(word, replace, text, debug=False):
         _text = []
         _group = match.group()
         if debug:
-            print '# [repl]: \'{0}\' with \'{1}\'.'.format(_group, replace)
+            print '# [repl-debug]: \'{0}\' to \'{1}\''.format(_group, replace)
 
         matches, replaces = _group.split(' '), replace.split(' ')
         for _match, _replacement in itertools.izip_longest(matches, replaces):
