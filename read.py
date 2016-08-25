@@ -310,7 +310,7 @@ def main():
                         default=80, type=int, metavar=('N'))
     parser.add_argument('-d', '--debug', help=debug_help, default=[],
                         nargs='+', choices=('http', 'text', 'repl'),
-                        metavar=('FLAG', 'http, text, repl'))
+                        metavar=('flag(s)', 'http, text, repl'))
     args = vars(parser.parse_args())
 
     debug_args = {

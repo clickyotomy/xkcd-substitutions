@@ -29,7 +29,7 @@ USAGE
     optional arguments:
       -h, --help            show this help message and exit
       -w N, --width N       text width; default: 80
-  -d FLAG [http text repl ...], --debug FLAG [http text repl ...]
+  -d flag(s) [http text repl ...], --debug flag(s) [http text repl ...]
                             enable debugging; http: http-requests,
                             text: orignal-content, repl: text-replacement
 
