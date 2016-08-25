@@ -74,7 +74,7 @@ def justify(text, length=70):
         else:
             groups.append(group)
 
-    for group in groups:
+    for group in groups[:-1]:
         slots = len(group) - 1
         spaces = length - sum(len(word) for word in group)
         if not spaces:
@@ -90,6 +90,7 @@ def justify(text, length=70):
             together = [item for sublist in map(None, group, spaces)
                         for item in sublist][:-1]
             sentences.append(together)
+    sentences.append([' '.join(groups[-1]).ljust(length, ' ')])
     return sentences
 
 
@@ -199,7 +200,7 @@ def fetch(width=70, text_debug=True, request_debug=False):
     article.download()
     article.parse()
 
-    text = re.sub(r'\n+', ' ', article.text)
+    text = re.sub(r'\n+', '\n', article.text)
 
     # Print the source metadata.
     print '\n{0}\n'.format('*' * width)
@@ -234,10 +235,13 @@ def fetch(width=70, text_debug=True, request_debug=False):
     print '\n'.join([_.center(width, ' ') for _ in
                      textwrap.wrap(substitute(article.title), width=width)])
     print '\n{0}\n'.format('-' * width)
-    substituted = justify(substitute(text), width)
-    for sentence in substituted:
-        print ''.join(sentence)
-    print '\n{0}\n'.format('^' * width)
+
+    for sentence in text.split('\n'):
+        substituted = justify(substitute(sentence), width)
+        for sentence in substituted:
+            print ''.join(sentence)
+        print ''
+    print '{0}\n'.format('^' * width)
 
 
 def substitute(content):
