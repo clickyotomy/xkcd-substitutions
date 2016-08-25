@@ -234,8 +234,11 @@ def fetch(width=70, text_debug=False, request_debug=False, repl_debug=False):
     article = newspaper.Article(post['url'])
     time = datetime.fromtimestamp(post['time']).strftime('%Y-%m-%d %H:%M:%S')
 
-    article.download()
-    article.parse()
+    try:
+        article.download()
+        article.parse()
+    except:
+        return
 
     text = re.sub(r'\n+', '\n', article.text)
 
