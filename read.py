@@ -309,8 +309,8 @@ def main():
     parser.add_argument('-w', '--width', help='text width; default: 80',
                         default=80, type=int, metavar=('N'))
     parser.add_argument('-d', '--debug', help=debug_help, default=[],
-                        nargs='*', choices=('http', 'text', 'repl'),
-                        metavar=('DEBUG', 'http, text, repl'))
+                        nargs='+', choices=('http', 'text', 'repl'),
+                        metavar=('FLAG', 'http, text, repl'))
     args = vars(parser.parse_args())
 
     debug_args = {
