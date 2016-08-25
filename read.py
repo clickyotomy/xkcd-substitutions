@@ -297,13 +297,15 @@ def main():
     message = ('Substitutions that make reading the news more fun!\n'
                'https://github.com/clickyotomy/xkcd-substitutions')
 
+    debug_help = ('enable debugging; http: http-requests, '
+                  'text: orignal-content, repl: text-replacement')
     parser = ArgumentParser(description=message,
                             formatter_class=RawDescriptionHelpFormatter)
     parser.add_argument('-w', '--width', help='text width; default: 80',
                         default=80, type=int, metavar=('N'))
-    parser.add_argument('-d', '--debug', help='enable debugging',
-                        default=[], nargs='+', choices=('http', 'text'),
-                        metavar=('http', 'text'))
+    parser.add_argument('-d', '--debug', help=debug_help, default=[],
+                        nargs='*', choices=('http', 'text', 'repl'),
+                        metavar=('DEBUG', 'http, text, repl'))
     args = vars(parser.parse_args())
 
     debug_args = {
@@ -316,6 +318,9 @@ def main():
 
     if 'text' in args['debug']:
         debug_args.update({'text_debug': True})
+
+    if 'repl' in args['debug']:
+        debug_args.update({'repl_debug': True})
 
     fetch(width=args['width'], **debug_args)
 
