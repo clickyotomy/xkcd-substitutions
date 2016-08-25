@@ -79,6 +79,8 @@ def justify(text, length=70):
         spaces = length - sum(len(word) for word in group)
         if not spaces:
             sentences.append([group])
+        elif len(group) == 1 and spaces:
+            sentences.append([group[0].ljust(length, ' ')])
         else:
             possible = [_ for _ in list(rule_asc_len(spaces, slots))
                         if (len(_) + 1) == len(group)]
@@ -88,7 +90,6 @@ def justify(text, length=70):
             together = [item for sublist in map(None, group, spaces)
                         for item in sublist][:-1]
             sentences.append(together)
-
     return sentences
 
 
@@ -174,10 +175,12 @@ def reddit(debug=False):
 
         except requests.exceptions.RequestException as http_error:
             print http_error[0][0]
-            break
+            print "Fetching another article (retries: {0}).".format(retries)
+            continue
         except (ValueError, KeyError, IndexError):
             print 'Unable to parse response from Reddit.'
-            break
+            print "Fetching another article (retries: {0}).".format(retries)
+            continue
 
     return content
 
@@ -210,7 +213,7 @@ def fetch(width=70, text_debug=True, request_debug=False):
     print textwrap.fill('# domain:    {domain}'.format(domain=post['domain']),
                         subsequent_indent=' ' * 13, width=width)
 
-    print textwrap.fill('# source:    {url}.'.format(url=post['url']),
+    print textwrap.fill('# source:    {url}'.format(url=post['url']),
                         subsequent_indent=' ' * 13, width=width)
     print '\n{0}\n'.format('*' * width)
 
