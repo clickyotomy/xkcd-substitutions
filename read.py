@@ -11,6 +11,7 @@ import json
 import random
 import hashlib
 import textwrap
+import itertools
 from datetime import datetime
 from argparse import (ArgumentParser, RawDescriptionHelpFormatter)
 
@@ -44,13 +45,47 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
+def replace_with_case(word, replace, text, debug=True):
+    '''
+    Make a replacement, but preserve the case.
+    '''
+    def repl(match):
+        '''
+        Helper sub-module.
+        '''
+        _text = []
+        _group = match.group()
+        if debug:
+            print '# [repl]: \'{0}\' with \'{1}\'.'.format(_group, replace)
+
+        matches, replaces = _group.split(' '), replace.split(' ')
+        for _match, _replacement in itertools.izip_longest(matches, replaces):
+            if _match is not None:
+                if _match.isupper():
+                    _text.append(_replacement.upper())
+                elif _match.islower():
+                    _text.append(_replacement.lower())
+                elif _match.istitle():
+                    _text.append(_replacement.title())
+                else:
+                    _text.append(_replacement)
+            else:
+                _text.append(_replacement)
+
+        return ' '.join(_text)
+    return re.sub(r'\b{0}\b'.format(word), repl, text, flags=re.IGNORECASE)
+
+
 def justify(text, length=70):
     '''
     Justify text for a given width.
     '''
     sentences = []
     words = text.split()
-    if len(max(words, key=len)) > length:
+    try:
+        if len(max(words, key=len)) > length:
+            return []
+    except ValueError:
         return []
 
     groups, index = [], 0
@@ -186,7 +221,7 @@ def reddit(debug=False):
     return content
 
 
-def fetch(width=70, text_debug=True, request_debug=False):
+def fetch(width=70, text_debug=False, request_debug=False, repl_debug=False):
     '''
     Fetch the article using 'newspaper'.
     '''
@@ -233,24 +268,24 @@ def fetch(width=70, text_debug=True, request_debug=False):
 
     # Parse the content, justify and display the text.
     print '\n'.join([_.center(width, ' ') for _ in
-                     textwrap.wrap(substitute(article.title), width=width)])
+                     textwrap.wrap(substitute(article.title, repl_debug),
+                                   width=width)])
     print '\n{0}\n'.format('-' * width)
 
     for sentence in text.split('\n'):
-        substituted = justify(substitute(sentence), width)
+        substituted = justify(substitute(sentence, repl_debug), width)
         for sentence in substituted:
             print ''.join(sentence)
         print ''
     print '{0}\n'.format('^' * width)
 
 
-def substitute(content):
+def substitute(content, repl_debug):
     '''
     Make the substitution.
     '''
     for _word, _substitute in MAPPINGS.iteritems():
-        content = re.sub(r'\b{0}\b'.format(_word.lower()), _substitute,
-                         content, flags=re.IGNORECASE)
+        content = replace_with_case(_word, _substitute, content, repl_debug)
 
     return content
 
