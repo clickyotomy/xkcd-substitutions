@@ -33,9 +33,6 @@ USAGE
                             enable debugging; http: http-requests,
                             text: orignal-content, repl: text-replacement
 
-TODO
-    [-] Look into case-sensitive text replacement.
-
 
 NOTES
     `substitutions.json` will be updated when a new issue of the comic
