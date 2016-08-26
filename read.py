@@ -237,7 +237,7 @@ def fetch(width=80, text_debug=False, request_debug=False, repl_debug=False):
     try:
         article.download()
         article.parse()
-    except:
+    except ValueError:
         return
 
     text = re.sub(r'\n+', '\n', article.text)
