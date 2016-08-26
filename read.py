@@ -78,7 +78,7 @@ def replace_with_case(word, replace, text, debug=False):
     return re.sub(r'\b{0}\b'.format(word), repl, text, flags=re.IGNORECASE)
 
 
-def justify(text, length=70):
+def justify(text, length=80):
     '''
     Justify text for a given width.
     '''
@@ -223,7 +223,7 @@ def reddit(debug=False):
     return content
 
 
-def fetch(width=70, text_debug=False, request_debug=False, repl_debug=False):
+def fetch(width=80, text_debug=False, request_debug=False, repl_debug=False):
     '''
     Fetch the article using 'newspaper'.
     '''
