@@ -21,18 +21,18 @@ SETUP
 
 
 USAGE
-    read.py [-h] [-w N] [-d flags [http, text, repl ...]]
+    usage: ./read.py [-h] [-w N] [-d {http,text,repl} [{http,text,repl} ...]]
 
     Substitutions that make reading the news more fun!
     https://github.com/clickyotomy/xkcd-substitutions
 
     optional arguments:
-    -h, --help            show this help message and exit
-    -w N, --width N       text width; default: 80
-    -d flag(s) [http, text, repl ...], --debug flag(s) [http, text, repl ...]
-                        enable debugging; http: http-requests, text: orignal-
-                        content, repl: text-replacement
-
+      -h, --help            show this help message and exit
+      -w N, --width N       text width; default: 80
+      -d {http,text,repl} [{http,text,repl} ...], --debug {http,text,repl}
+                          [{http,text,repl} ...]
+                            enable debugging; http: http-requests, text: orignal-
+                            content, repl: text-replacement
 NOTES
     [-] substitutions.json will be updated when a new issue of the comic
         is released.
