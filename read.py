@@ -13,7 +13,8 @@ import hashlib
 import textwrap
 import itertools
 from datetime import datetime
-from argparse import (ArgumentParser, RawDescriptionHelpFormatter)
+from argparse import (ArgumentParser, RawDescriptionHelpFormatter,
+                      ArgumentTypeError, Action)
 
 import requests
 import newspaper
@@ -309,8 +310,7 @@ def main():
     parser.add_argument('-w', '--width', help='text width; default: 80',
                         default=80, type=int, metavar=('N'))
     parser.add_argument('-d', '--debug', help=debug_help, default=[],
-                        nargs='+', choices=('http', 'text', 'repl'),
-                        metavar=('flag(s)', 'http, text, repl'))
+                        nargs='+', choices=('http', 'text', 'repl'))
     args = vars(parser.parse_args())
 
     debug_args = {
