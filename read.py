@@ -21,7 +21,7 @@ import newspaper
 
 __author__ = 'Srinidhi Kaushik'
 __license__ = "MIT"
-__version__ = "0.1"
+__version__ = "0.2"
 __credits__ = ["ErikR"]
 
 
