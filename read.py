@@ -13,8 +13,7 @@ import hashlib
 import textwrap
 import itertools
 from datetime import datetime
-from argparse import (ArgumentParser, RawDescriptionHelpFormatter,
-                      ArgumentTypeError, Action)
+from argparse import (ArgumentParser, RawDescriptionHelpFormatter)
 
 import requests
 import newspaper
